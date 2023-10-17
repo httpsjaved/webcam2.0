@@ -5,7 +5,7 @@ let constrains = {
     audio: true
 }
 console.log("calleds")
-navigator.mediaDevices.getUserMedia(constrains) // return promise
-    .then((stream) => {
-        video.srcObject = stream
-    })
+// navigator.mediaDevices.getUserMedia(constrains) // return promise
+//     .then((stream) => {
+//         video.srcObject = stream
+//     })
