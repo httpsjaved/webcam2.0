@@ -80,3 +80,14 @@ video {
     }
 
 }
+
+.timer-container {
+    position: absolute;
+    bottom:10rem;
+    left: 5rem;
+    color: aqua;
+    font-size: 0.8rem;
+}
+.timer {
+    display: none;
+}
