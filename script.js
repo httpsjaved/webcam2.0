@@ -3,6 +3,7 @@ let recordBtnContainer = document.querySelector(".record-btn-container"); // for
 let captureBtnContainer = document.querySelector(".capture-btn-container");
 let recordBtn = document.querySelector(".record-btn"); // for animation
 let captureBtn = document.querySelector(".capture-btn");
+let transparentColor = "transparent";
 
 let recordFlag = false;
 let recorder;
@@ -67,6 +68,10 @@ captureBtnContainer.addEventListener("click", (event) => {
   let tool = canvas.getContext("2d");
   tool.drawImage(video, 0, 0, canvas.width, canvas.height);
 
+  // filtering
+  tool.fillStyle = transparentColor;
+  tool.fillRect(0, 0, canvas.width, canvas.height);
+
   let imageURl = canvas.toDataURL();
   let a = document.createElement("a"); // create anchor element to download
   a.href = imageURl;
@@ -105,3 +110,18 @@ function stopTimer() {
   timer.innerHTML = "00:00:00";
   timer.style.display = "none";
 }
+
+let filterLayer = document.querySelector(".filter-layer");
+
+// filtering logic
+let allFilter = document.querySelectorAll(".filter");
+allFilter.forEach((filterElement) => {
+  filterElement.addEventListener("click", (e) => {
+    //filterElement.style.backgroundcolor = "lightblue"; this is to set but we require to get the color
+
+    // get
+    transparentColor =
+      getComputedStyle(filterElement).getPropertyValue("background-color");
+    filterLayer.style.backgroundColor = transparentColor;
+  });
+});
